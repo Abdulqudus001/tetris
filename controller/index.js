@@ -4,9 +4,9 @@ const ctx = canvas.getContext('2d');
 ctx.scale(20, 20);
 
 const matrix = [
-  [0, 0, 0],
-  [1, 1, 1],
-  [0, 1, 0]
+  [0, 1, 0],
+  [0, 1, 0],
+  [0, 1, 1]
 ]
 
 const player = {
@@ -18,6 +18,14 @@ const draw = () => {
   ctx.fillStyle = '#000';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   drawMatrix(player.matrix, player.pos);
+}
+
+const createMatrix = (width, height) => {
+  const matrix = [];
+  while (height--) {
+    matrix.push(Array(width).fill(0));
+  }
+  return matrix;
 }
 
 const drawMatrix = (matrix, { left, top }) => {
@@ -42,11 +50,15 @@ const update = (time = 0) => {
   dropCounter += currTime;
 
   if (dropCounter > dropInterval) {
-    player.pos.top ++;
-    dropCounter = 0;
+    drop();
   }
   draw();
   requestAnimationFrame(update);
+}
+
+const drop = () => {
+  player.pos.top++;
+  dropCounter = 0;
 }
 
 update()
