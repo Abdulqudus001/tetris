@@ -26,7 +26,7 @@ canvas {
   height: 80vh;
 }
 
-.cover {
+.cover, .game-over {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -69,7 +69,7 @@ canvas {
   justify-content: center;
 }
 
-#start, #pause {
+#start, #pause, .restart {
   display: block;
   width: 150px;
   height: 40px;
@@ -83,11 +83,16 @@ canvas {
 #start:hover,
 #start:disabled,
 #pause:hover,
-#pause:disabled {
+#pause:disabled,
+.restart:hover {
   background-color: #ddd;
 }
 
 #start:disabled,
 #pause:disabled {
   cursor: not-allowed;
+}
+
+.restart {
+  margin: 0 auto;
 }

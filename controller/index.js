@@ -10,6 +10,7 @@ const player = {
 
 const startButton = document.querySelector('#start');
 const pauseButton = document.querySelector('#pause');
+const gameOverEl = document.querySelector('.game-over');
 
 let scoreCounter = 0;
 const score = document.querySelector('#score');
@@ -80,8 +81,10 @@ const playerMove = direction => {
 let dropCounter = 0;
 let dropInterval = 1000;
 let isPaused = false;
-
+let request;
 let lastTime = 0;
+let gameOver = false;
+
 const update = (time = 0) => {
   const currTime = time - lastTime;
   lastTime = time;
@@ -92,19 +95,19 @@ const update = (time = 0) => {
     drop();
   }
   draw();
-  if (!isPaused) {
+  if (!isPaused && !gameOver) {
     if (lastTime == 0) {
       setTimeout(startGame, 3000);
       document.querySelector('.cover').style.display = 'flex';
     } else {
-      requestAnimationFrame(update);
+      request = requestAnimationFrame(update);
     }
   }
 }
 
 const startGame = () => {
   document.querySelector('.cover').style.display = 'none';
-  requestAnimationFrame(update);
+  request = requestAnimationFrame(update);
 }
 
 const hardDrop = () => {
@@ -164,7 +167,11 @@ const rotate = (matrix, dir) => {
 }
 
 const startNewGame = () => {
+  field.forEach(row => row.fill(0));
+  startButton.textContent = 'Start';
   startButton.disabled = true;
+  gameOver = false;
+  gameOverEl.style.display = 'none';
   playerReset()
   update()
   draw();

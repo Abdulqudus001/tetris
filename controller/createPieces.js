@@ -44,14 +44,24 @@ const createPiece = type => {
   }
 }
 
+const finalScore = document.querySelector('#finalScore');
+
 const playerReset = () => {
   const pieces = "ijlostz".toUpperCase();
   player.matrix = createPiece(pieces[Math.floor(Math.random() * pieces.length)]);
   player.pos.top = 0;
   player.pos.left = (Math.floor(field[0].length / 2)) - (Math.floor(player.matrix[0].length / 2));
   if (collide(field, player)) {
-    field.forEach(row => row.fill(0));
     scoreCounter = 0;
-    button.disabled = false;
+    startButton.textContent = 'Restart';
+    startButton.disabled = false;
+    gameOver = true;
+    gameOverEl.style.display = 'flex';
+    finalScore.textContent = `Score: ${scoreCounter}`;
+    // } else {
+    //   scoreCounter = 0;
+    //   startButton.textContent = 'Restart';
+    //   cancelAnimationFrame(request);
+    // }
   }
 }
