@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  text-align: center;
+  font-size: 2em;
+  font-family: sans-serif;
+  color: #fff;
+  background-color: #202028;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-size: em; */
+}
+
+#score {
+  margin: 0 10px;
+}
+
+canvas {
+  border: .2em solid #fff;
+  height: 90vh;
+}

@@ -51,5 +51,6 @@ const playerReset = () => {
   player.pos.left = (Math.floor(field[0].length / 2)) - (Math.floor(player.matrix[0].length / 2));
   if (collide(field, player)) {
     field.forEach(row => row.fill(0));
+    scoreCounter = 0;
   }
 }

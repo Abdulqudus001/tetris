@@ -4,12 +4,15 @@ const ctx = canvas.getContext('2d');
 ctx.scale(20, 20);
 
 const player = {
-  pos: { left: 5, top: 0 },
-  matrix: createPiece('T')
+  pos: { left: 0, top: 0 },
+  matrix: null
 }
 
+let scoreCounter = 0;
+const score = document.querySelector('#score');
 
 const draw = () => {
+  score.textContent = scoreCounter;
   ctx.fillStyle = '#000';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -147,6 +150,7 @@ const rotate = (matrix, dir) => {
   }
 }
 
+playerReset()
 update()
 
 draw();
