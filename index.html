@@ -7,8 +7,12 @@
   <link rel="stylesheet" href="./styles/index.css">
 </head>
 <body>
-  <div class="score"><h2>Score :</h2><span id="score"></span></div>
+  <div class="score"><h2>Score :</h2><span id="score">0</span></div>
   <canvas id="tetris" width="240" height="400"></canvas>
+  <div class="controls">
+    <button onclick="startNewGame()" id="start">Start</button>
+    <button onclick="pauseGame()" id="pause">Pause</button>
+  </div>
   <div class="cover">
     <div class="countdown">
       <div class="countdown-timer">0 1 2 3</div>

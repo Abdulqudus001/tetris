@@ -52,5 +52,6 @@ const playerReset = () => {
   if (collide(field, player)) {
     field.forEach(row => row.fill(0));
     scoreCounter = 0;
+    button.disabled = false;
   }
 }

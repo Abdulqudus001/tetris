@@ -14,11 +14,7 @@ document.addEventListener('keydown', e => {
   } else if (e.keyCode == 32) {
     hardDrop();
   } else if (e.keyCode == 27 || e.keyCode == 112) {
-    isPaused = !isPaused;
-    if (!isPaused) {
-      setTimeout(startGame, 3000);
-      document.querySelector('.cover').style.display = 'flex';
-    }
+    pauseGame();
   }
 })
 

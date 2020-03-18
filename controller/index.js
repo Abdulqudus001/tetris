@@ -8,6 +8,9 @@ const player = {
   matrix: null
 }
 
+const startButton = document.querySelector('#start');
+const pauseButton = document.querySelector('#pause');
+
 let scoreCounter = 0;
 const score = document.querySelector('#score');
 
@@ -160,7 +163,19 @@ const rotate = (matrix, dir) => {
   }
 }
 
-playerReset()
-update()
+const startNewGame = () => {
+  startButton.disabled = true;
+  playerReset()
+  update()
+  draw();
+}
 
-draw();
+const pauseGame = () => {
+  isPaused = !isPaused;
+  const buttonText = isPaused ? 'Resume' : 'Pause';
+  pauseButton.textContent = buttonText;
+  if (!isPaused) {
+    setTimeout(startGame, 3000);
+    document.querySelector('.cover').style.display = 'flex';
+  }
+}

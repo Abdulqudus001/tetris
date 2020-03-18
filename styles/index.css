@@ -34,7 +34,7 @@ canvas {
   right: 0;
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }
@@ -50,7 +50,6 @@ canvas {
 .countdown-timer {
   width: 1em;
   font-size: 3em;
-  /* line-height: 0em; */
   position: absolute;
   animation: count 3s steps(3);
   animation-fill-mode: forwards;
@@ -63,4 +62,32 @@ canvas {
   100% {
     bottom: -3.5em;
   }
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+#start, #pause {
+  display: block;
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: none;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+#start:hover,
+#start:disabled,
+#pause:hover,
+#pause:disabled {
+  background-color: #ddd;
+}
+
+#start:disabled,
+#pause:disabled {
+  cursor: not-allowed;
 }
