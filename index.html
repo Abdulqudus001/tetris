@@ -7,8 +7,16 @@
   <link rel="stylesheet" href="./styles/index.css">
 </head>
 <body>
-  <div class="score"><h2>Score:</h2><span id="score"></span></div>
+  <div class="score"><h2>Score :</h2><span id="score"></span></div>
   <canvas id="tetris" width="240" height="400"></canvas>
+  <div class="cover">
+    <div class="countdown">
+      <div class="countdown-timer">0 1 2 3</div>
+    </div>
+  </div>
+
+
+  <script src="./controller/countdown.js"></script>
   <script src="./controller/events.js"></script>
   <script src="./controller/createPieces.js"></script>
   <script src="./controller/clearLine.js"></script>

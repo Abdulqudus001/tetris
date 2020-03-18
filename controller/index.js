@@ -90,8 +90,18 @@ const update = (time = 0) => {
   }
   draw();
   if (!isPaused) {
-    requestAnimationFrame(update);
+    if (lastTime == 0) {
+      setTimeout(startGame, 3000);
+      document.querySelector('.cover').style.display = 'flex';
+    } else {
+      requestAnimationFrame(update);
+    }
   }
+}
+
+const startGame = () => {
+  document.querySelector('.cover').style.display = 'none';
+  requestAnimationFrame(update);
 }
 
 const hardDrop = () => {
