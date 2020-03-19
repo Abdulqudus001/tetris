@@ -52,6 +52,8 @@ const playerReset = () => {
   player.pos.top = 0;
   player.pos.left = (Math.floor(field[0].length / 2)) - (Math.floor(player.matrix[0].length / 2));
   if (collide(field, player)) {
+    gameOverTone.play();
+    audio.pause();
     scoreCounter = 0;
     startButton.textContent = 'Restart';
     startButton.disabled = false;

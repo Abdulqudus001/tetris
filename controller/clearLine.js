@@ -11,6 +11,7 @@ const clearLine = () => {
     ++y;
     scoreCounter += rowCount * 10;
     rowCount *= 2;
+    clearLineTone.play();
   }
 
 }

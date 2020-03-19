@@ -12,6 +12,16 @@ const startButton = document.querySelector('#start');
 const pauseButton = document.querySelector('#pause');
 const gameOverEl = document.querySelector('.game-over');
 
+const audio = document.querySelector('#audio');
+const clearLineTone = document.querySelector('#clearline');
+const collideTone = document.querySelector('#collide');
+const gameOverTone = document.querySelector('#gameover');
+
+audio.volume = 0.3;
+clearLineTone.volume = 0.4;
+collideTone.volume = 0.4;
+gameOverTone.volume = 0.5
+
 let scoreCounter = 0;
 const score = document.querySelector('#score');
 
@@ -73,7 +83,9 @@ const drawBlockOnField = (field, block) => {
 
 const playerMove = direction => {
   player.pos.left += direction;
+  collideTone.play();
   if (collide(field, player)) {
+    // collideTone.play();
     player.pos.left -= direction;
   }
 }
@@ -118,11 +130,13 @@ const hardDrop = () => {
   if (collide(field, player)) {
     player.pos.top--;
   }
+  collideTone.play();
 } 
 
 const drop = () => {
   player.pos.top++;
   if (collide(field, player)) {
+    collideTone.play();
     player.pos.top--;
     drawBlockOnField(field, player);
     playerReset();
@@ -147,6 +161,7 @@ const playerRotate = dir => {
 }
 
 const rotate = (matrix, dir) => {
+  collideTone.play();
   for (let i = 0; i < matrix.length; ++i) {
     for (let j = 0; j < i; ++j) {
       [
@@ -167,6 +182,7 @@ const rotate = (matrix, dir) => {
 }
 
 const startNewGame = () => {
+  audio.play();
   field.forEach(row => row.fill(0));
   startButton.textContent = 'Start';
   startButton.disabled = true;
@@ -178,11 +194,13 @@ const startNewGame = () => {
 }
 
 const pauseGame = () => {
+  audio.pause();
   isPaused = !isPaused;
   const buttonText = isPaused ? 'Resume' : 'Pause';
   pauseButton.textContent = buttonText;
   if (!isPaused) {
-    setTimeout(startGame, 3000);
+    audio.play()
+;    setTimeout(startGame, 3000);
     document.querySelector('.cover').style.display = 'flex';
   }
 }
