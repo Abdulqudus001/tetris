@@ -8,6 +8,10 @@ const player = {
   matrix: null
 }
 
+// Show intro screen
+const intro = document.querySelector('.intro');
+
+
 const startButton = document.querySelector('#start');
 const pauseButton = document.querySelector('#pause');
 const gameOverEl = document.querySelector('.game-over');
@@ -16,6 +20,10 @@ const audio = document.querySelector('#audio');
 const clearLineTone = document.querySelector('#clearline');
 const collideTone = document.querySelector('#collide');
 const gameOverTone = document.querySelector('#gameover');
+
+const showHelpBtn = document.querySelector('#help');
+const hideHelpBtn = document.querySelector('#close');
+const helpMenu = document.querySelector('.help');
 
 audio.volume = 0.3;
 clearLineTone.volume = 0.4;
@@ -182,6 +190,8 @@ const rotate = (matrix, dir) => {
 }
 
 const startNewGame = () => {
+  intro.style.display = 'none';
+  pauseButton.disabled = false;
   audio.play();
   field.forEach(row => row.fill(0));
   startButton.textContent = 'Start';
@@ -203,4 +213,13 @@ const pauseGame = () => {
 ;    setTimeout(startGame, 3000);
     document.querySelector('.cover').style.display = 'flex';
   }
+}
+
+const showHelp = () => {
+  helpMenu.style.display = 'flex';
+  intro.style.display = 'none';
+}
+
+const hideHelp = () => {
+  helpMenu.style.display = 'none';
 }

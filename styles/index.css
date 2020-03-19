@@ -11,6 +11,23 @@ body {
   background-color: #202028;
 }
 
+.intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 10vh;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.698);
+}
+
+.intro p {
+  width: 600px;
+  max-width: 100%;
+}
+
 .score {
   display: flex;
   align-items: center;
@@ -69,7 +86,7 @@ canvas {
   justify-content: center;
 }
 
-#start, #pause, .restart {
+#start, #pause, .restart, #help, #close {
   display: block;
   width: 150px;
   height: 40px;
@@ -84,7 +101,9 @@ canvas {
 #start:disabled,
 #pause:hover,
 #pause:disabled,
-.restart:hover {
+.restart:hover,
+#help:hover,
+#close:hover {
   background-color: #ddd;
 }
 
@@ -95,4 +114,17 @@ canvas {
 
 .restart {
   margin: 0 auto;
+}
+
+.help {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.698);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
